@@ -1,24 +1,43 @@
 .text {
   font-family: inherit;
-  font-size: 20px;
-  line-height: 35px;
+  font-size: 16px;
+  line-height: 1.75;
   text-align: justify;
   color: @color-dark;
+
+  @media (min-width: @width-tablet) {
+    font-size: 18px;
+  }
+
+  @media (min-width: @width-desktop) {
+    font-size: 20px;
+  }
 }
 
 .text--primary {
   color: @color-white;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 500;
   font-style: italic;
   text-transform: capitalize;
   text-align: center;
-  padding-bottom: 20px;
+  padding-bottom: 5px;
   border-bottom: 1px solid #eeeeee;
+
+  
+  @media (min-width: @width-tablet) {
+    padding-bottom: 20px;
+    font-size: 26px;
+  }
+
+  @media (min-width: @width-desktop) {
+    font-size: 30px;
+  }
 }
 
 .text--footer {
   color: @color-grey;
   line-height: 23px;
   text-align: center;
+
 }

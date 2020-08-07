@@ -1,6 +1,7 @@
 .header {
   position: fixed;
   width: 100%;
+  box-sizing: border-box;
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: #1e1e1e;
@@ -8,14 +9,18 @@
 }
 
 
-@media (min-width: @width-desktop) {
+
   .header__logo {
-    margin-left: -15px;
+    @media (min-width: @width-tablet){
+      margin-bottom: 15px;
+    }
+    @media (min-width: @width-desktop) {
+      margin-left: -15px;
+    }
   }
   .header__nav {
-    margin-right: -15px;
+    @media (min-width: @width-desktop) {
+      margin-right: -15px;
+    }
   }
-  // .header__container {
-  //   margin-top: 10px;
-  // }
-}
+ 

@@ -1,21 +1,24 @@
 .container {
   .flex-between-start();
   flex-wrap: wrap;
-  width: 97.5%;
+  // width: 270px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.25%;
-  padding-right: 1.25%;
+  padding-left: 10px;
+  padding-right: 10px;
 
-  // @media (min-width: @width-tablet) {
-  //   width: 1170px;
-  // }
+  @media (min-width: @width-tablet) {
+    .flex-around-center();
+    // width: 738px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 
-  // @media (min-width: @width-desktop) {
-  //   width: 1170px;
-  //   padding-left: 15px;
-  //   padding-right: 15px;
-  // }
+  @media (min-width: @width-desktop) {
+    width: 1170px;
+    // padding-left: 15px;
+    // padding-right: 15px;
+  }
 }
 
 .container--center {
