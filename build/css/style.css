@@ -439,7 +439,6 @@ html {
 }
 img {
   width: 100%;
-  height: auto;
 }
 ul,
 li {
@@ -799,6 +798,11 @@ svg {
   -ms-flex-direction: column;
   flex-direction: column;
   width: 100%;
+}
+@media (min-width: 768px) {
+  .description__images {
+    margin-top: -5px;
+  }
 }
 @media (min-width: 1200px) {
   .description__images {
