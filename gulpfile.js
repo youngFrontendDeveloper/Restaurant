@@ -18,14 +18,14 @@ const cache = require("gulp-cache");
 const sourcemaps = require("gulp-sourcemaps");
 const del = require("del");
 const browserSync = require("browser-sync").create();
-
+// const mixitup = require('mixitup');
 
 
 
 // Файлы для подключения в строгом порядке:
 
 let jsFiles = [
-  // "./source/js/lib.js",
+  // "./source/js/lib/*.js",
   // "./node_modules/slick-carousel/slick/slick.js",
   // "./node_modules/magnific-popup/dist/jquery.magnific-popup.js",
   "./source/js/main.js",
@@ -46,14 +46,16 @@ function styles() {
     "./source/less/mixins.less",
     "./source/less/page.less",  
     "./source/less/common.less",
+    "./source/less/section.less",
     "./source/less/container.less",
     "./source/less/titles.less",
     "./source/less/text.less",
     "./source/less/links.less",
-    // "./source/less/button.less",
+    "./source/less/main.less",
     "./source/less/header.less",
     "./source/less/logo.less",
     "./source/less/nav.less",
+    "./source/less/background.less",
     "./source/less/welcome.less",
     "./source/less/description.less",
     "./source/less/about.less",
@@ -62,7 +64,9 @@ function styles() {
     "./source/less/bread.less",
     "./source/less/featured.less",
     "./source/less/reservation.less",
-    "./source/less/contacts.less",
+    "./source/less/filter.less",
+    
+
     
    
     // "./source/less/contacts.less",

@@ -5,6 +5,7 @@
   "dependencies": {
     "del": "^5.1.0",
     "magnific-popup": "^1.1.0",
+    "mixitup": "^3.3.1",
     "normalize.css": "^8.0.1",
     "slick-carousel": "^1.8.1"
   },
@@ -23,7 +24,6 @@
     "gulp-replace": "^1.0.0",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-svg-sprite": "^1.5.0",
-    
     "gulp-svgmin": "^2.2.0",
     "gulp-svgstore": "^7.0.1",
     "gulp-uglify": "^3.0.2",

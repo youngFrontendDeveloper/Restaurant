@@ -1,26 +1,32 @@
 .container {
   .flex-between-start();
   flex-wrap: wrap;
-  // width: 270px;
+  min-width: 320px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  box-sizing: border-box;
 
   @media (min-width: @width-tablet) {
     .flex-around-center();
-    // width: 738px;
-    padding-left: 15px;
-    padding-right: 15px;
+    min-width: 768px;   
   }
 
   @media (min-width: @width-desktop) {
-    width: 1170px;
-    // padding-left: 15px;
-    // padding-right: 15px;
+    .flex-between-start();
+    width: 1200px;    
   }
 }
 
 .container--center {
   align-items: center;
+}
+
+.description--beer {
+  margin-top: 30px;
+
+  @media(min-width: @width-tablet) {
+    margin-top: 65px;
+  }
 }
