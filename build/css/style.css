@@ -987,6 +987,10 @@ svg {
 .link--menu--active {
   border-bottom: 1px solid #9BE86F;
 }
+.link--menu--active:hover {
+  color: #ffffff;
+  cursor: default;
+}
 .link--grey {
   color: #bdbdbd;
 }
