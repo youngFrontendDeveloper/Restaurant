@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
   <link rel="stylesheet" href="build/css/style.min.css">
   <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
   <title>Restaurant</title>
@@ -64,11 +65,11 @@
         <div class="description__img description__img--about">
           <div class="description__row">
             <img class="image-about" src="build/img/kabob.jpg" alt="Вид блюд: кабоб" width="250" height="180">
-            <img class="image-about" src="build/img/limes.jpg" alt="Вид блюд: limes" width="250" height="180">
+            <img class="image-about none" src="build/img/limes.jpg" alt="Вид блюд: limes" width="250" height="180">
           </div>
           <div class="description__row">
-            <img class="image-about" src="build/img/radish.jpg" alt="Вид блюд: radish" width="250" height="180">
-            <img  class="image-about" src="build/img/corn.jpg" alt="Вид блюд: corn" width="250" height="180">
+            <img class="image-about none" src="build/img/radish.jpg" alt="Вид блюд: radish" width="250" height="180">
+            <img  class="image-about none" src="build/img/corn.jpg" alt="Вид блюд: corn" width="250" height="180">
          
           </div>
         </div>   <!--    end description__images -->
@@ -160,7 +161,7 @@
         <div class="description__img">
           <div class="description__row">
             <img class="image-bread" src="build/img/bread1.jpg" alt="Вид блюд: кабоб" width="250" height="180">
-          <img class="image-bread" src="build/img/bread2.jpg" alt="Вид блюд: radish" width="260" height="280">
+          <img class="image-bread none" src="build/img/bread2.jpg" alt="Вид блюд: radish" width="260" height="280">
           </div>
         </div>   <!--    end description__images -->
        </div>   <!--    end description -->
@@ -177,11 +178,16 @@
           <h3 class="description__title title title--small title--featured">Have A Look<br>To Our<br>Dishes!</h3>
           <p class="text">Each food is handmade at the crack of dawn, using only the simplest of ingredients to bring out smells and flavors that beckon the whole block. Stop by anytime and experience simplicity at its finest.</p>
         </div>
-        <div class="description__img">
-          <div class="description__row">
-            <img class="image-bread" src="build/img/slider1.jpg" alt="Вид блюд: кабоб" width="250" height="180">
-          <img class="image-bread" src="build/img/slider2.jpg" alt="Вид блюд: radish" width="260" height="280">
-          <img class="image-bread" src="build/img/slider3.jpg" alt="Вид блюд: radish" width="260" height="280">
+        <div class="slick-slider">
+          <div class="slider-item">
+            <img class="image-slide" src="build/img/slider1.jpg" alt="Популярные блюда" width="220" height="145">
+          </div>
+          <div class="slider-item">
+            <img class="image-slide" src="build/img/slider2.jpg" alt="Популярные блюда" width="220" height="145">
+          </div>
+          <div class="slider-item">
+            <img class="image-slide" src="build/img/slider3.jpg" alt="Популярные блюда" width="220" height="145">
+          </div>
           </div>
         </div>   <!--    end description__images -->
        </div>   <!--    end description -->
@@ -213,7 +219,7 @@
     <div class="container">
       <div class="footer__col">
         <p class="text text--footer">&copy; Restaurant 2014, Theme by <br>
-          <a class="link link--grey" href="https://themewagon.com/">ThemeWagon</a></p>
+          <a class="link link--grey" href="#">ThemeWagon</a></p>
       </div>
       <div class="footer__col">
         <p class="text text--footer">Back to 
@@ -228,8 +234,9 @@
     </div>     <!--    end container -->
   </footer>
 
-  <script src="build/js/jquery-1.10.2.min.js"></script>
-  <script src="build/js/mixitup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <!-- <script src="build/js/mixitup.min.js"></script> -->
   <script src="build/js/script.js"></script>
   
   

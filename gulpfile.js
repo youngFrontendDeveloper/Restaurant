@@ -38,7 +38,9 @@ function styles() {
   return gulp.src([
     // Пишем все файлы, которые хотим объединить, в том порядке, в каком они будут располагаться в объединенном файле
     "./node_modules/normalize.css/normalize.css",
-   
+    "./source/css/**/slick.css",
+    "./source/css/**/slick-theme.css",
+    
     // "./node_modules/slick-carousel/slick/slick.css",
     // "./node_modules/magnific-popup/dist/magnific-popup.css",
     "./source/less/fonts.less", 
@@ -63,6 +65,7 @@ function styles() {
     "./source/less/beer.less",
     "./source/less/bread.less",
     "./source/less/featured.less",
+    "./source/less/slider.less",
     "./source/less/reservation.less",
     "./source/less/filter.less",
     

@@ -1,17 +1,13 @@
-// $(function(){
-//   $("#Container").mixitup({
-//     selectors: {
-//       targetSelector:'.mix',
-//       filterSelector:'.filter-container__item',
-     
-//   }
+$(function(){
+  'use strict';
 
-//   });
-// });
+  $('.slick-slider').slick({
+    slidesToShow: 1,   /*Показывает по 3 картинки*/
+    slidesToScroll: 1,   //прокручивает по 1 картинке
+    autoplay: true,
+    autoplaySpeed: 2000,
+    dots: true,
+  });
 
-// $(function(){
-//   $('#portfolio').mixitup({
-//       targetSelector: '.item',
-//       transitionSpeed: 350
-//   });
-// });
+});
+
