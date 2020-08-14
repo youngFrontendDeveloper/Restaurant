@@ -58,11 +58,11 @@
    <section class="section about" id="about">
     <div class="container">
       <div class="description description--about">
-        <div class="description__text">
+        <div class="description__text-block">
           <h3 class="description__title title title--small title--about">About Us</h3>
           <p class="text">Restaurant is a place for simplicity. Good food, good beer, and good service. Simple is the name of the game, and we’re good at finding it in all the right places, even in your dining experience. We’re a small group from Denver, Colorado who make simple food possible. Come join us and see what simplicity tastes like.</p>
         </div>
-        <div class="description__img description__img--about">
+        <div class="description__img-block description__img-block--about">
           <div class="description__row">
             <img class="image-about" src="build/img/kabob.jpg" alt="Вид блюд: кабоб" width="250" height="180">
             <img class="image-about none" src="build/img/limes.jpg" alt="Вид блюд: limes" width="250" height="180">
@@ -72,14 +72,14 @@
             <img  class="image-about none" src="build/img/corn.jpg" alt="Вид блюд: corn" width="250" height="180">
          
           </div>
-        </div>   <!--    end description__images -->
+        </div>   <!--    end description__img-block -->
        </div>   <!--    end description -->
     </div>      <!--    end container -->
    </section>
    <!-- --------- pricing ---------- -->
    <section class="section pricing" id="pricing">
     <div class="background background--pricing background--fixed">
-      <h2 class="title"><span class="title--underlined">Affordable</span> Pricing</h2>
+      <h2 class="title"><span class="title--underlined--color-white">Affordable</span> Pricing</h2>
     </div>
     <div class="container">
       <div class="description">
@@ -133,14 +133,14 @@
    <!-- --------- beer ---------- -->
    <section class="section beer" id="beer">
     <div class="background background--beer background--fixed">
-      <h2 class="title">Great<span class="title--underlined">Place</span> To Enjoy</h2>
+      <h2 class="title">Great<span class="title--underlined--color-white">Place</span> To Enjoy</h2>
     </div>
     <div class="container">
       <div class="description">
-        <div class="description__img">
+        <div class="description__img-block">
           <img class="image-beer" src="build/img/beer_spec.jpg" alt="Кружка пива" width="445" height="350">
-        </div>   <!--    end description__images -->
-        <div class="description__text description__text--beer">
+        </div>   <!--    end description__img-block -->
+        <div class="description__text-block description__text-block--beer">
           <h3 class="description__title title title--small title--beer">our beer</h3>
           <p class="text">Here at Restaurant we’re all about the love of beer. New and bold flavors enter our doors every week, and we can’t help but show them off. While we enjoy the classics, we’re always passionate about discovering something new, so stop by and experience our craft at its best.</p>
         </div>
@@ -150,31 +150,31 @@
    <!-- --------- bread ---------- -->
    <section class="section bread" id="bread">
     <div class="background background--bread background--fixed">
-      <h2 class="title">Our Breakfast <span class="title--underlined">menu</span></h2>
+      <h2 class="title">Our Breakfast <span class="title--underlined--color-white">menu</span></h2>
     </div>
     <div class="container">
       <div class="description">
-        <div class="description__text">
+        <div class="description__text-block">
           <h3 class="description__title title title--small title--bread">OUR BREAD</h3>
           <p class="text">Restaurant is a place for simplicity. Good food, good beer, and good service. Simple is the name of the game, and we’re good at finding it in all the right places, even in your dining experience. We’re a small group from Denver, Colorado who make simple food possible. Come join us and see what simplicity tastes like.</p>
         </div>
-        <div class="description__img">
+        <div class="description__img-block">
           <div class="description__row">
-            <img class="image-bread" src="build/img/bread1.jpg" alt="Вид блюд: кабоб" width="250" height="180">
-          <img class="image-bread none" src="build/img/bread2.jpg" alt="Вид блюд: radish" width="260" height="280">
+            <img class="image-bread" src="build/img/bread2.jpg" alt="Вид блюд: кабоб" width="250" height="180">
+          <img class="image-bread none" src="build/img/bread1.jpg" alt="Вид блюд: radish" width="260" height="280">
           </div>
-        </div>   <!--    end description__images -->
+        </div>   <!--    end description__img-block -->
        </div>   <!--    end description -->
     </div>      <!--    end container -->
    </section>
    <!-- --------- featured ---------- -->
    <section class="section featured" id="featured">
     <div class="background background--featured background--fixed">
-      <h2 class="title">Our Featured Dishes <span class="title--underlined">menu</span></h2>
+      <h2 class="title">Our Featured Dishes <span class="title--underlined--color-white">menu</span></h2>
     </div>
     <div class="container">
       <div class="description">
-        <div class="description__text">
+        <div class="description__text-block">
           <h3 class="description__title title title--small title--featured">Have A Look<br>To Our<br>Dishes!</h3>
           <p class="text">Each food is handmade at the crack of dawn, using only the simplest of ingredients to bring out smells and flavors that beckon the whole block. Stop by anytime and experience simplicity at its finest.</p>
         </div>
@@ -188,8 +188,8 @@
           <div class="slider-item">
             <img class="image-slide" src="build/img/slider3.jpg" alt="Популярные блюда" width="220" height="145">
           </div>
-          </div>
-        </div>   <!--    end description__images -->
+        </div>
+        
        </div>   <!--    end description -->
     </div>      <!--    end container -->
    </section>
@@ -201,41 +201,75 @@
     <div class="container">
       <div class="description">
         
-        <form class="form" action="#" method="post">
-          <div class="form-col">
-            <input class="form-item" type="text" placeholder="First Name" name="first-name">
-            <input class="form-item" type="text" placeholder="Last Name" name="last-name">
-            <input class="form-item" type="text" placeholder="State" name="State">
-            <input class="form-item" type="text" placeholder="Reservation Date" name="reserv-date">
+        <form class="reservation__form form form--size--s" action="#" method="post">
+          <div class="form-col form-col--size--s">
+            <input class="form-item text" type="text" placeholder="First Name" name="first-name">
+            <input class="form-item text" type="text" placeholder="Last Name" name="last-name">
+            <input class="form-item text" type="text" placeholder="State" name="State">
+            <input class="form-item text" type="date" placeholder="Reservation Date" name="reserv-date">
+          </div>
+          <div class="form-col form-col--size--s">
+            <input class="form-item text" type="text" placeholder="Phone" name="phone">
+            <input class="form-item text" type="number" placeholder="Guest namber" name="guest-namber">
+            <input class="form-item text" type="email" placeholder="Email" name="email">
+            <input class="form-item text" type="text" placeholder="Subject" name="subject">
           </div>
           <div class="form-col">
-            <input class="form-item" type="text" placeholder="Phone" name="phone">
-            <input class="form-item" type="text" placeholder="Guest namber" name="guest-namber">
-            <input class="form-item" type="text" placeholder="Email" name="email">
-            <input class="form-item" type="text" placeholder="Subject" name="subject">
-          </div>
-          <div class="form-col">
-            <button type="submit">Reserve</button>
+            <button class="button" type="submit">Reserve</button>
           </div>
         </form>
       
-        <div class="description__text description__text--small">
-          <h4>Hours</h4>
-          <p class="text">Monday to Friday: 7:30 AM - 11:30 AM</p>
-          <p class="text">Saturday & Sunday: 8:00 AM - 9:00 AM</p>
-          <p class="text">Monday to Friday: 12:00 PM - 5:00 PM</p>
-          <p class="text">Monday to Saturday: 6:00 PM - 1:00 AM</p>
-          <p class="text">Sunday to Monday: 5:30 PM - 12:00 AM</p>
+        <div class="description__text-block description__text-block--size--s">
+          <h4 class="title title--underlined--color-grey">Hours</h4>
+          <p class="text text--underlined">Saturday & Sunday: 8:00 AM - 9:00 AM</p>
+          <p class="text text--underlined">Monday to Friday: 12:00 PM - 5:00 PM</p>
+          <p class="text text--underlined">Monday to Friday: 7:30 AM - 11:30 AM</p>
+          <p class="text text--underlined">Monday to Saturday: 6:00 PM - 1:00 AM</p>
+          <p class="text text--underlined">Sunday to Monday: 5:30 PM - 12:00 AM</p>
         </div>
         
       </div>   <!--    end description -->
     </div>      <!--    end container -->
+    
+    
    </section>
    <!-- --------- contacts ---------- -->
-   <section class="section contacts" id="contacts">
+   <section class="section section--contacts contacts" id="contacts">
+    <div class="brackground brackground--contacts">
+      <div class="container container--width--center">
+        <div class="container__col">
+          <p class="container__text text text--green">FOLLOW</p>
+          <ul class="social">
+            <li class="social__item"><a class="social__icon icon-twitter" href="#" title="icon-twitter"></a></li>
+            <li class="social__item"><a class="social__icon icon-github" href="#" title="icon-github"></a></li>
+            <li class="social__item"><a class="social__icon icon-linkedin" href="#" title="icon-linkedin"></a></li>
+            <li class="social__item"><a class="social__icon icon-mail" href="#" title="icon-mail"></a></li>
+          </ul>
+        </div>
+        <div class="container__col">
+          <p class="container__text text text--green">OR DIAL</p>
+          <a href="tel: +7 (941) 883-335-6524" class="text text--phone">(941) 883-335-6524</a>
+        </div>
+      </div>
+    </div>
+    <div class="map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3619.101888132289!2d91.86551011479227!3d24.8945059840379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x37505558dd0be6a1%3A0x65c7e47c94b6dc45!2sTechnext%20Limited!5e0!3m2!1sru!2sru!4v1597411761809!5m2!1sru!2sru" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
     <div class="container">
       <div class="description">
-   
+        <form class="form" action="#" method="post">
+          <div class="form-col">
+            <input class="form-item text" type="text" placeholder="Name" name="name">
+            <input class="form-item text" type="email" placeholder="Email" name="email">
+            <input class="form-item text" type="text" placeholder="Subject" name="subject">            
+          </div>
+          <div class="form-col">
+            <textarea class="form-item form-item--message" name="message" id="message" placeholder="Message"></textarea>            
+          </div>
+          <div class="form-col">
+            <button class="button" type="submit">Send message</button>
+          </div>
+        </form>
       </div>   <!--    end description -->
     </div>      <!--    end container -->
    </section>
@@ -245,7 +279,7 @@
   <footer class="footer">
     <div class="container">
       <div class="footer__col">
-        <p class="text text--footer">&copy; Restaurant 2014, Theme by <br>
+        <p class="text text--footer">&copy; Restaurant 2014, Theme by 
           <a class="link link--grey" href="#">ThemeWagon</a></p>
       </div>
       <div class="footer__col">

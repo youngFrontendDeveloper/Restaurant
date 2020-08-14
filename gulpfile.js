@@ -68,6 +68,7 @@ function styles() {
     "./source/less/slider.less",
     "./source/less/reservation.less",
     "./source/less/form.less",
+    "./source/less/social.less",
     "./source/less/filter.less",
     
 

@@ -90,6 +90,30 @@
   }
 }
 
-.title--underlined {
+.title--underlined--color-white {
   border-bottom: 10px solid @color-white;
+}
+
+.title--underlined--color-grey {
+  width: 100%;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  color: @color-dark;
+  border-bottom: 1px solid #eeeeee;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 0.040em;
+  text-align: center;
+  line-height: 1.1;
+  
+
+  @media (min-width: @width-tablet) {
+    font-size: 30px;
+    
+  }
+
+  @media (min-width: @width-desktop) {
+    // font-size: 90px;
+    // padding-bottom: 30px;
+  }
 }
