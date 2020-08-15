@@ -37,39 +37,74 @@ $(function(){
     //Функция для фильтра (самописная :))
 
   $('[data-filter="all"]').click(function() {
-   
-    $('.item').removeClass('hide');
+    $('.item').show(500);
     $('.filter-controls__item').removeClass('filter-controls__item--active');
     $('[data-filter="all"]').addClass('filter-controls__item--active');
   });
 
   $('[data-filter="breakfast"]').click(function() {
-    $('.item').addClass('hide');
+    $('.item').hide(500);
     $('.filter-controls__item').removeClass('filter-controls__item--active');
-    $('.breakfast').removeClass('hide');
+    $('.breakfast').show(500);
     $('[data-filter="breakfast"]').addClass('filter-controls__item--active');
   });
 
   $('[data-filter="special"]').click(function() {
-    $('.item').addClass('hide');
+    $('.item').hide(500);
     $('.filter-controls__item').removeClass('filter-controls__item--active');
-    $('.special').removeClass('hide');
+    $('.special').show(500);
     $('[data-filter="special"]').addClass('filter-controls__item--active');
   });
 
   $('[data-filter="desert"]').click(function() {
-    $('.item').addClass('hide');
+    $('.item').hide(500);
     $('.filter-controls__item').removeClass('filter-controls__item--active');
-    $('.desert').removeClass('hide');
+    $('.desert').show(500);
     $('[data-filter="desert"]').addClass('filter-controls__item--active');
   });
 
   $('[data-filter="dinner"]').click(function() {
-    $('.item').addClass('hide');
+    $('.item').hide(500);
     $('.filter-controls__item').removeClass('filter-controls__item--active');
-    $('.dinner').removeClass('hide');
+    $('.dinner').show(500);
     $('[data-filter="dinner"]').addClass('filter-controls__item--active');
   });
+
+//Функция для фильтра (самописная :))
+
+// $('[data-filter="all"]').click(function() {
+//   $('.item').fadeIn();
+//   $('.filter-controls__item').removeClass('filter-controls__item--active');
+//   $('[data-filter="all"]').addClass('filter-controls__item--active');
+// });
+
+// $('[data-filter="breakfast"]').click(function() {
+//   $('.item').addClass('hide');
+//   $('.filter-controls__item').removeClass('filter-controls__item--active');
+//   $('.breakfast').removeClass('hide');
+//   $('[data-filter="breakfast"]').addClass('filter-controls__item--active');
+// });
+
+// $('[data-filter="special"]').click(function() {
+//   $('.item').addClass('hide');
+//   $('.filter-controls__item').removeClass('filter-controls__item--active');
+//   $('.special').removeClass('hide');
+//   $('[data-filter="special"]').addClass('filter-controls__item--active');
+// });
+
+// $('[data-filter="desert"]').click(function() {
+//   $('.item').addClass('hide');
+//   $('.filter-controls__item').removeClass('filter-controls__item--active');
+//   $('.desert').removeClass('hide');
+//   $('[data-filter="desert"]').addClass('filter-controls__item--active');
+// });
+
+// $('[data-filter="dinner"]').click(function() {
+//   $('.item').addClass('hide');
+//   $('.filter-controls__item').removeClass('filter-controls__item--active');
+//   $('.dinner').removeClass('hide');
+//   $('[data-filter="dinner"]').addClass('filter-controls__item--active');
+// });
 
 
   
