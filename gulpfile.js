@@ -37,7 +37,7 @@ let jsFiles = [
 function styles() {
   return gulp.src([
     // Пишем все файлы, которые хотим объединить, в том порядке, в каком они будут располагаться в объединенном файле
-    "./node_modules/normalize.css/normalize.css",
+    // "./node_modules/normalize.css/normalize.css",
     "./source/css/**/slick.css",
     "./source/css/**/slick-theme.css",
     
@@ -70,11 +70,11 @@ function styles() {
     "./source/less/form.less",
     "./source/less/social.less",
     "./source/less/filter.less",
-    
+    // "./source/less/contacts.less",
 
     
    
-    // "./source/less/contacts.less",
+    
     // "./source/less/form.less",
     // "./source/less/testimonials.less",
     // "./source/less/news.less",
@@ -149,23 +149,6 @@ gulp.task("images", function () {
   .pipe(browserSync.stream());
 });
 
-// function imgmin() {
-//   return gulp.src("source/img/**/*.{png, jpg, jpeg, gif, svg}")
-//   .pipe(cache(
-//       imagemin([
-//         imagemin.gifsicle({interlaced: true}),
-//         imagemin.mozjpeg({quality: 75, progressive: true}),
-//         imagemin.optipng({optimizationLevel: 3}),
-//         imagemin.svgo({
-//             plugins: [
-//                 {removeViewBox: false},
-//                 {cleanupIDs: false}
-//             ]
-//         })
-//       ]))
-//   )
-//     .pipe(gulp.dest("build/img"));
-// }
 
 // Task на функцию webp
 function webpic() {
@@ -186,9 +169,10 @@ function watch() {
   gulp.watch("./source/less/**/*.less", gulp.series("styles"));   // Отслеживаем файлы css 
   gulp.watch("./source/js/**/*.js", gulp.series("scripts")); 
   gulp.watch("./source/img/**/*.{png, jpg, jpeg, svg}", gulp.series("images"));
+  gulp.watch("./build/img/**/*.svg", gulp.series("sprite"));
   gulp.watch("./source/video/**/*.{mp4, webm}", gulp.series("video"));  
-  gulp.watch("./source/img/**/*.{png, jpg, jpeg}", gulp.series("webp"));   // Отслеживаем файлы js 
-  gulp.watch("./*.html").on("change", browserSync.reload);  //  // Отслеживаем файлы html
+  // gulp.watch("./source/img/**/*.{png, jpg, jpeg}", gulp.series("webp"));   // Отслеживаем файлы  
+  gulp.watch("./*.html").on("change", browserSync.reload);    // Отслеживаем файлы html
 }
 
 

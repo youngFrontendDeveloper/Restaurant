@@ -5,6 +5,7 @@
   margin-bottom: 25px;
   margin-right: auto;
   margin-left: auto;
+  
 
   @media(min-width: @width-tablet) {
     width: 600px;
@@ -14,12 +15,16 @@
 .filter-controls__item {
   padding: 6px 10px;
   cursor: pointer;
+ 
+
   &:hover {
     color: rgb(129, 24, 24);
+    
   }
 }
-.filter-controls__item.active {
+.filter-controls__item--active {
     border-bottom: 1px solid @color-black;
+    
   }
 
 
@@ -37,8 +42,10 @@
   width: 207px;
   margin: 10px;
   background-color:rgba(211, 15, 34, 1);
+  
 }
 
-// .mix {
-//   display: none;
+
+// .item {
+//   animate: 2s ease;
 // }
