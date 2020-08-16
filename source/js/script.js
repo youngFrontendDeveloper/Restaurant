@@ -34,77 +34,37 @@ $(function(){
     });
 
 
-    //Функция для фильтра (самописная :))
 
-  $('[data-filter="all"]').click(function() {
-    $('.item').show(500);
-    $('.filter-controls__item').removeClass('filter-controls__item--active');
-    $('[data-filter="all"]').addClass('filter-controls__item--active');
-  });
+    //Функция для фильтрации элементов 
 
-  $('[data-filter="breakfast"]').click(function() {
-    $('.item').hide(500);
-    $('.filter-controls__item').removeClass('filter-controls__item--active');
-    $('.breakfast').show(500);
-    $('[data-filter="breakfast"]').addClass('filter-controls__item--active');
-  });
+    $(function() {
 
-  $('[data-filter="special"]').click(function() {
-    $('.item').hide(500);
-    $('.filter-controls__item').removeClass('filter-controls__item--active');
-    $('.special').show(500);
-    $('[data-filter="special"]').addClass('filter-controls__item--active');
-  });
+      var newSelection = "";
+    
+      $(".filter-controls__item").click(function(){
+    
+          $(".filter-container").fadeTo(200, 0.10);
+    
+        $(".filter-controls__item").removeClass("filter-controls__item--active");
+        $(this).addClass("filter-controls__item--active");
+    
+        newSelection = $(this).attr("rel");
+    
+        $(".filter-container__item").not("."+newSelection).slideUp();
+        $("."+newSelection).slideDown();
+    
+          $(".filter-container").fadeTo(600, 1);
+    
+      });
+    
+    });
 
-  $('[data-filter="desert"]').click(function() {
-    $('.item').hide(500);
-    $('.filter-controls__item').removeClass('filter-controls__item--active');
-    $('.desert').show(500);
-    $('[data-filter="desert"]').addClass('filter-controls__item--active');
-  });
 
-  $('[data-filter="dinner"]').click(function() {
-    $('.item').hide(500);
-    $('.filter-controls__item').removeClass('filter-controls__item--active');
-    $('.dinner').show(500);
-    $('[data-filter="dinner"]').addClass('filter-controls__item--active');
-  });
 
-//Функция для фильтра (самописная :))
+  
+ 
 
-// $('[data-filter="all"]').click(function() {
-//   $('.item').fadeIn();
-//   $('.filter-controls__item').removeClass('filter-controls__item--active');
-//   $('[data-filter="all"]').addClass('filter-controls__item--active');
-// });
 
-// $('[data-filter="breakfast"]').click(function() {
-//   $('.item').addClass('hide');
-//   $('.filter-controls__item').removeClass('filter-controls__item--active');
-//   $('.breakfast').removeClass('hide');
-//   $('[data-filter="breakfast"]').addClass('filter-controls__item--active');
-// });
-
-// $('[data-filter="special"]').click(function() {
-//   $('.item').addClass('hide');
-//   $('.filter-controls__item').removeClass('filter-controls__item--active');
-//   $('.special').removeClass('hide');
-//   $('[data-filter="special"]').addClass('filter-controls__item--active');
-// });
-
-// $('[data-filter="desert"]').click(function() {
-//   $('.item').addClass('hide');
-//   $('.filter-controls__item').removeClass('filter-controls__item--active');
-//   $('.desert').removeClass('hide');
-//   $('[data-filter="desert"]').addClass('filter-controls__item--active');
-// });
-
-// $('[data-filter="dinner"]').click(function() {
-//   $('.item').addClass('hide');
-//   $('.filter-controls__item').removeClass('filter-controls__item--active');
-//   $('.dinner').removeClass('hide');
-//   $('[data-filter="dinner"]').addClass('filter-controls__item--active');
-// });
 
 
   
