@@ -6,9 +6,12 @@
   padding-bottom: 10px;
   background-color: #1e1e1e;
   z-index: 100;
+  border-bottom: 1px solid @color-white;
+
+  @media (min-width: @width-tablet){
+    border-bottom: none;
+  }
 }
-
-
 
   .header__logo {
     @media (min-width: @width-tablet){
@@ -18,7 +21,16 @@
       margin-left: -15px;
     }
   }
+
   .header__nav {
+    position: absolute;
+    top: 70px;
+    right: 0;
+
+    @media (min-width: @width-tablet){
+      position: static;
+    }
+
     @media (min-width: @width-desktop) {
       margin-right: -15px;
     }
