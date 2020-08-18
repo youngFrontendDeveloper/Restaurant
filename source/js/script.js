@@ -61,8 +61,21 @@ $(function(){
 
 
 
-  
- 
+   //Функция для мобильного меню
+   var navItems = document.querySelector('.nav__items');
+   var nav = document.querySelector('.nav');
+
+   function openMobileMenu() {
+    if (document.documentElement.clientWidth < 768) {
+      navItems.classList.add('nav__items--closed');
+      nav.addEventListener(click, function() {
+        navItems.classList.remove('nav__items--closed');
+      });
+    }
+    
+   }
+
+ openMobileMenu();
 
 
 

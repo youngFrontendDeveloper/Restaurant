@@ -373,6 +373,16 @@
   -ms-flex-align: start;
   align-items: flex-start;
 }
+.flex-center-between {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-line-pack: justify;
+  align-content: space-between;
+}
 .page {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -786,16 +796,6 @@ svg {
     margin-left: -15px;
   }
 }
-.header__nav {
-  position: absolute;
-  top: 70px;
-  right: 0;
-}
-@media (min-width: 768px) {
-  .header__nav {
-    position: static;
-  }
-}
 @media (min-width: 1200px) {
   .header__nav {
     margin-right: -15px;
@@ -818,13 +818,8 @@ svg {
     font-size: 34px;
   }
 }
-.nav {
-  display: none;
-  width: 60%;
-}
 @media (min-width: 768px) {
   .nav {
-    width: 100%;
     display: block;
     width: 650px;
     padding: 15px;
@@ -837,11 +832,15 @@ svg {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: flex-start;
+  -ms-flex-line-pack: justify;
+  align-content: space-between;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  width: 70%;
+  position: absolute;
+  top: 70px;
+  right: 0;
+  padding: 10px 30px;
   background-color: #1e1e1e;
 }
 @media (min-width: 768px) {
@@ -855,15 +854,50 @@ svg {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
+    position: static;
+    width: 100%;
   }
+}
+.nav__items--closed {
+  display: none;
 }
 .nav__item {
-  width: 80%;
+  width: 100%;
+}
+.nav__menu-mobile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-line-pack: justify;
+  align-content: space-between;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  width: 44px;
+  height: 34px;
+  margin-left: auto;
+  margin-top: 15px;
+  padding: 7px;
+  background-color: transparent;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.nav__menu-mobile:hover .menu-mobile__item {
+  background-color: #55b878;
 }
 @media (min-width: 768px) {
-  .nav__item {
-    width: inherit;
+  .nav__menu-mobile {
+    display: none;
   }
+}
+.menu-mobile__item {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #dddddd;
 }
 .background {
   display: -webkit-box;
