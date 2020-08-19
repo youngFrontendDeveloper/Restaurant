@@ -8,10 +8,6 @@
 }
 
 .nav__items {
-  display: flex;
-  justify-content: center;
-  align-content: space-between;
-  flex-wrap: wrap;
   width: 70%;
   position: absolute;
   top: 70px;
@@ -31,6 +27,10 @@
 
 .nav__item {
   width: 100%;
+
+  @media(min-width: @width-tablet) {
+    width: fit-content;
+  }  
 }
 
 .nav__menu-mobile {
@@ -46,9 +46,9 @@
   border-radius: 5px;
   cursor: pointer;
 
-  // &:hover {
-  //   border-color: @color-ligth-green;
-  // }
+  &:hover {
+    border-color: @color-ligth-green;
+  }
 
   &:hover .menu-mobile__item {
     background-color: @color-ligth-green;

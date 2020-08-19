@@ -826,16 +826,6 @@ svg {
   }
 }
 .nav__items {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -ms-flex-line-pack: justify;
-  align-content: space-between;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   width: 70%;
   position: absolute;
   top: 70px;
@@ -864,6 +854,13 @@ svg {
 .nav__item {
   width: 100%;
 }
+@media (min-width: 768px) {
+  .nav__item {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+}
 .nav__menu-mobile {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -884,6 +881,9 @@ svg {
   border: 1px solid #dddddd;
   border-radius: 5px;
   cursor: pointer;
+}
+.nav__menu-mobile:hover {
+  border-color: #55b878;
 }
 .nav__menu-mobile:hover .menu-mobile__item {
   background-color: #55b878;
