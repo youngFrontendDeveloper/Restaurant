@@ -1,0 +1,89 @@
+
+{
+    "editor.tokenColorCustomizations": {
+        "[GitHub Plus]": {
+            "textMateRules": [
+                {
+                    "scope": "entity.other.attribute-name.class",
+                    "settings": {
+                        "foreground": "#3f7dbb",
+                        
+                    }
+                },
+                {
+                    "scope":  "entity.name.tag",
+                    "settings": {
+                        "foreground": "#c94a89",
+                    }
+                },
+                {
+                    "scope":   "comment.block",
+                    "settings": {
+                        "foreground": "#c3c4c9",
+                    }
+                },
+                {
+                    "scope":   "constant.numeric",
+                    "settings": {
+                        "foreground": "#5a5edd",
+                    }
+                },
+                {
+                    "scope":   "support.type.property-name",
+                    "settings": {
+                        "foreground": "#5d6166dc",
+                    }
+                },
+                {
+                    "scope":   "string.quoted.double",
+                    "settings": {
+                        "foreground": "#3f7dbb",
+                    }
+                },
+                {
+                    "scope": "entity.other.attribute-name",
+                    "settings": {
+                        "foreground": "#6c971c",
+                        
+                    }
+                },
+                {
+                    "scope": "meta.attribute.id",
+                    "settings": {
+                        "foreground": "#0730b9",
+                        
+                    }
+                },
+            ],
+        },
+
+        "[Apple Pips (light)]": {
+            "textMateRules": [
+                {
+                    "scope": "variable.other.readwrite",
+                    "settings": {
+                        "foreground": "#3f7dbb",
+                        
+                    }
+                },
+
+                {
+                    "scope": "variable.other.object.property",
+                    "settings": {
+                        "foreground": "#0bc28b",
+                        
+                    }
+                },
+                
+            ],
+        },
+
+
+
+
+    },
+
+
+
+       
+}
