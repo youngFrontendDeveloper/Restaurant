@@ -1,287 +1,308 @@
-//  Подключенные модули  gulp 
-const gulp = require("gulp");
-const less = require("gulp-less");
-const plumber = require("gulp-plumber");
-const concat = require("gulp-concat");
-const autoprefixer = require("gulp-autoprefixer");
-const cleanCSS = require("gulp-clean-css");
-const rename = require("gulp-rename");
-const uglify = require("gulp-uglify");
-const imagemin = require("gulp-imagemin");
-const webp = require("gulp-webp");
-const svgstore = require("gulp-svgstore");
-const svgSprite = require("gulp-svg-sprite");
-const	svgmin = require("gulp-svgmin");
-const	cheerio = require("gulp-cheerio");
-const	replace = require("gulp-replace");
-const cache = require("gulp-cache");
-const sourcemaps = require("gulp-sourcemaps");
-const del = require("del");
-const browserSync = require("browser-sync").create();
-// const mixitup = require('mixitup');
+const gulp = require( "gulp" );
+const htmlmin = require( "gulp-htmlmin" );
+const plumber = require( "gulp-plumber" );
+const sourcemap = require( "gulp-sourcemaps" );
+const less = require( "gulp-less" );
+const postcss = require( "gulp-postcss" );
+const autoprefixer = require( "autoprefixer" );
+const csso = require( "postcss-csso" );
+const terser = require("gulp-terser");
+const rename = require( "gulp-rename" );
+const browserSync = require( "browser-sync" ).create();
+const imagemin = require( "gulp-imagemin" );
+const concat = require( "gulp-concat" );
+const imgCompress = require( "imagemin-jpeg-recompress" );
+const imageminPngquant = require( "imagemin-pngquant" );
+const newer = require( "gulp-newer" );
+const svgSprite = require( "gulp-svg-sprite" );
+const replace = require( "gulp-replace" );
+const webp = require( "gulp-webp" );
+
+// npm uninstall gulp-imagemin --save-dev
+// npm install gulp-imagemin@7.1.0 --save-dev
 
 
+/* FILES PATHS */
 
-// Файлы для подключения в строгом порядке:
+// Project info
 
-let jsFiles = [
-  // "./source/js/lib/*.js",
-  // "./node_modules/slick-carousel/slick/slick.js",
-  // "./node_modules/magnific-popup/dist/jquery.magnific-popup.js",
-  "./source/js/main.js",
-];
+const buildFolder = "./build";
+
+// Название текущего проекта
+
+const projectName = "restaurant";
+
+const themePath = `${ buildFolder }/`; // For other cases
+const htmlMin = false; // HTML minification (false by default)
+
+const paths = {
+  prod: {
+    build: `${ buildFolder }`,
+  },
+  html: {
+    src: "./src/*.html",
+    dest: `${ buildFolder }`,
+    watch: [ "./src/*.html" ],
+  },
+  less: {
+    src: "./src/less/style.less",
+    dest: `${ themePath }/css`,
+    watch: [ "./src/less/**/*.less", "./src/js/components/**/*.less" ],
+  },
+  js: {
+    src: "./src/js/main.js",
+    dest: `${ themePath }/js`,
+    watch: "./src/js/*.js",
+  },
+  images: {
+    src: [ "./src/img/**/*", "!./src/img/*.svg", "!./src/img/**/*.webp" ],
+    dest: `${ themePath }/img`,
+    watch: [ "./src/img/**/*", "!./src/img/*.svg", "!./src/img/**/*.webp" ],
+  },
+  webpImages: {
+    src: "./src/img/**/*.webp",
+    dest: `${ themePath }/img`,
+    watch: "./src/img/**/*.webp",
+  },
+  svgSprite: {
+    src: "./src/img/icons/*.svg",
+    dest: `${ themePath }/img/icons`,
+    watch: "./src/img/icons/*.svg",
+  },
+  svg: {
+    src: [ "./src/img/*.svg", "!./src/img/icons/*.svg" ],
+    dest: `${ themePath }/img/`,
+    watch: [ "./src/img/*.svg", "!./src/img/icons/*.svg" ],
+  },
+  fonts: {
+    src: "./src/fonts/**/*",
+    dest: `${ themePath }/fonts`,
+    watch: "./src/fonts/*",
+  },
+  assets: {
+    src: "./src/assets/*.*",
+    dest: `${ themePath }/assets`,
+    watch: "./src/assets/*.*",
+  }
+};
+
+// Project build type (development or production)
+let isDev = true; // Оставить true для development или заменить на false для production версии сборки проекта
+let isProd = !isDev;
+// let jsFilename = isDev ? "./[name].js" : "./[name].min.js";
 
 
 // TASKS
-// Task на стили CSS 
-function styles() {
-  return gulp.src([
-    // Пишем все файлы, которые хотим объединить, в том порядке, в каком они будут располагаться в объединенном файле
-    // "./node_modules/normalize.css/normalize.css",
-    "./source/css/**/slick.css",
-    "./source/css/**/slick-theme.css",
-    
-    // "./node_modules/slick-carousel/slick/slick.css",
-    // "./node_modules/magnific-popup/dist/magnific-popup.css",
-    "./source/less/fonts.less", 
-    "./source/less/variables.less", 
-    "./source/less/mixins.less",
-    "./source/less/page.less",  
-    "./source/less/common.less",
-    "./source/less/section.less",
-    "./source/less/container.less",
-    "./source/less/titles.less",
-    "./source/less/text.less",
-    "./source/less/links.less",
-    "./source/less/main.less",
-    "./source/less/header.less",
-    "./source/less/logo.less",
-    "./source/less/nav.less",
-    "./source/less/background.less",
-    "./source/less/welcome.less",
-    "./source/less/description.less",
-    "./source/less/about.less",
-    "./source/less/pricing.less",
-    "./source/less/beer.less",
-    "./source/less/bread.less",
-    "./source/less/featured.less",
-    "./source/less/slider.less",
-    "./source/less/reservation.less",
-    "./source/less/form.less",
-    "./source/less/social.less",
-    "./source/less/filter.less",
-    // "./source/less/contacts.less",
 
-    
-   
-    
-    // "./source/less/form.less",
-    // "./source/less/testimonials.less",
-    // "./source/less/news.less",
-    // "./source/less/error-404.less",
-    "./source/less/footer.less",
+// Html
+const html = () => {
+  return gulp
+    .src( paths.html.src )
+    .pipe( htmlmin( { collapseWhitespace: true } ) )
+    .pipe( gulp.dest( paths.html.dest ) )
+    .pipe( browserSync.stream() );
+};
+exports.html = html;
 
-
-    
-    
-  ])
-  .pipe(plumber())
-  .pipe(sourcemaps.init())    // инициализируем создание Source Maps
-  .pipe(concat("style.less"))
-  // .pipe(gulp.dest("./source/less")) 
-  .pipe(less())
-  .pipe(autoprefixer({
-    overrideBrowserslist:  ["last 2 versions"],
-    cascade: false
-  }))
-  .pipe(gulp.dest("./build/css")) 
-  .pipe(cleanCSS({           // Минификация css 
-    level: 2
-  }))  
-  .pipe(rename("style.min.css"))
-  .pipe(sourcemaps.write(".")) // пути для записи SourceMaps - в данном случае карта SourceMaps будет добавлена прям в данный файл main.min.css в самом конце
-  .pipe(gulp.dest("build/css"))
-  .pipe(browserSync.stream());
-}
+/* LESS TO CSS CONVERTATION & MINIFICATION */
+const styles = () => {
+  return gulp
+    .src( paths.less.src )
+    .pipe( plumber() )
+    .pipe( sourcemap.init() )
+    // .pipe( concat( "style.less" ) )
+    .pipe( less() )
+    .pipe( postcss( [ autoprefixer(), csso() ] ) )
+    .pipe( rename( "style.min.css" ) )
+    .pipe( sourcemap.write( "." ) )
+    .pipe( gulp.dest( paths.less.dest ) )
+    .pipe( browserSync.stream() );
+};
+exports.styles = styles;
 
 
 // Task на скрипты JS 
-function scripts() {
-  return gulp.src(jsFiles)
-  // .pipe(sourcemaps.init()) // инициализируем создание Source Maps
-  .pipe(concat("script.js"))  // Объединение файлов в один
-  .pipe(gulp.dest("./source/js")) 
-  .pipe(uglify({
-    toplevel: true
-  }))
-  // .pipe(sourcemaps.write(".")) // пути для записи SourceMaps - в данном случае карта SourceMaps будет добавлена прям в данный файл scripts.min.js в самом конце в формате комментария
-  .pipe(gulp.dest("./build/js"))
-  .pipe(browserSync.stream());
-} 
+const scripts = () => {
+  return gulp.src( paths.js.src )
+    .pipe( sourcemap.init() ) // инициализируем создание Source Maps
+    .pipe(terser())
+    .pipe(rename("script.min.js"))
+    .pipe(sourcemap.write(".")) // пути для записи SourceMaps - в данном случае карта SourceMaps будет добавлена прям в данный файл scripts.min.js в самом конце в формате комментария
+    .pipe( gulp.dest( paths.js.dest ) )
+    .pipe( browserSync.stream() );
+};
+exports.scripts = scripts;
 
+/* IMAGES MINIFICATION */
 
-// Task на функцию del
-// function clean() {
-//   return del.sync("build") (function(cb) {
-//     return cache.clearAll(cb);
-//   });
-// }
+const imgmin = () => {
+  return gulp
+    .src( paths.images.src )
+    .pipe( newer( paths.images.dest ) )
+    .pipe(
+      imagemin( [
+        imgCompress( {
+          loops: 4,
+          min: 70,
+          max: 80,
+          quality: "high",
+        } ),
+        imageminPngquant( { quality: [ 0.7, 0.8 ], speed: 4 } ),
+      ] )
+    )
+    .pipe( gulp.dest( paths.images.dest ) )
+    .pipe( browserSync.stream() );
+};
+exports.imgmin = imgmin;
 
-function clean() {
-  return del(["build/*"]);
-}
+/* IMAGES JPG/JPEG & PNG TO WEBP CONVERTATION */
 
-gulp.task('clear', function(){
-  // будем вручную запускать при необходимости очистки кэша
-  return cache.clearAll();
-});
+const createWebp = () => {
+  return gulp
+    .src( paths.images.src )
+    .pipe( plumber() )
+    .pipe( webp() )
+    .pipe( gulp.dest( paths.images.dest ) )
+    .pipe( browserSync.stream() );
+};
+exports.createWebp = createWebp;
 
-// Task на функцию images
+/* SVG SPRITES */
 
-gulp.task("images", function () { 
-  return gulp.src("source/img/**/*.{png,jpg,svg}") 
-  .pipe(cache(imagemin([ 
-    imagemin.optipng({optimizationLevel: 3}), 
-    imagemin.mozjpeg({progressive: true}), 
-    imagemin.svgo() 
-  ])))
-  .pipe(gulp.dest("build/img"))
-  .pipe(browserSync.stream());
-});
-
-
-// Task на функцию webp
-function webpic() {
-  return gulp.src("build/img/**/*.{png, jpg, jpeg}")
-  .pipe(webp({quality: 90}))
-  .pipe(gulp.dest("build/img"));
-}
-
-
-// Task на функцию watch
-function watch() {
-  browserSync.init({
-    server: {
-      baseDir: "./"
-    }
-  });
-  gulp.watch("./source/**/*.html", gulp.series("html")); 
-  gulp.watch("./source/less/**/*.less", gulp.series("styles"));   // Отслеживаем файлы css 
-  gulp.watch("./source/js/**/*.js", gulp.series("scripts")); 
-  gulp.watch("./source/img/**/*.{png, jpg, jpeg, svg}", gulp.series("images"));
-  gulp.watch("./build/img/**/*.svg", gulp.series("sprite"));
-  gulp.watch("./source/video/**/*.{mp4, webm}", gulp.series("video"));  
-  // gulp.watch("./source/img/**/*.{png, jpg, jpeg}", gulp.series("webp"));   // Отслеживаем файлы  
-  gulp.watch("./*.html").on("change", browserSync.reload);    // Отслеживаем файлы html
-}
-
-
-
-// TASKS ДЛЯ ВЫЗОВА ФУНКЦИЙ
-// Task вызывающий функцию styles
-gulp.task("styles", styles);
-
-// Task вызывающий функцию scripts
-gulp.task("scripts", scripts);
-
-// Task вызывающий функцию очистки папки build 
-gulp.task("del", clean);
-
-// Task вызывающий функцию минимизации картинок
-// gulp.task("images", imgmin); 
-
-
-// Task вызывающий функцию webp
-gulp.task("webp", webpic);
-
-
-// Task для создания svg-спрайта Academy-модернизированный
-
-gulp.task("sprite", function () { 
-  return gulp.src("source/img/*.svg") 
-  // minify svg
-  .pipe(svgmin({
-    js2svg: {
-      pretty: true
-    }
-  }))
-  // remove all fill and style declarations in out shapes
-  .pipe(cheerio({
-    run: function ($) {
-      $('[fill]').removeAttr('fill');
-      $('[stroke]').removeAttr('stroke');
-      $('[style]').removeAttr('style');
-    },
-    parserOptions: { xmlMode: true }
-  }))
-  // cheerio plugin create unnecessary string ">', so replace it.
-  .pipe(replace("&gt;", ">"))
-
-  .pipe(svgstore({ 
-    inlineSvg: true 
-  }))
-  .pipe(rename("sprite.svg"))
-  .pipe(gulp.dest("build/img"));
-});
-
-
-
-
-// Task для создания svg-спрайта вариант 4 
-gulp.task('svgSprite', function () {
-  return gulp.src('source/img/*.svg')
-    .pipe(svgSprite(
-      config = {
-        // shape: {
-        //   dimension: { // Set maximum dimensions
-        //     maxWidth: 32,
-        //     maxHeight: 32
-        //    },
-        //   spacing: { // Add padding
-        //     padding: 10
-        //   },
-        //   dest: 'out/intermediate-svg' // Keep the intermediate files
-        // },
-        mode: {
-          view: { // Activate the «view» mode
-            bust: false,
-            render: {
-              less: true // Activate Sass output (with default options)
-            }
+const sprites = () => {
+  return (
+    gulp
+      .src( paths.svgSprite.src )
+      .pipe( plumber() )
+      .pipe( newer( paths.svgSprite.dest ) )
+      .pipe(
+        imagemin( [
+          imagemin.svgo( {
+            plugins: [
+              {
+                removeViewBox: true,
+              },
+              {
+                cleanupIDs: false,
+              },
+            ],
+          } ),
+        ] )
+      )
+      .pipe( replace( "&gt;", ">" ) )
+      .pipe(
+        svgSprite( {
+          mode: {
+            symbol: {
+              sprite: "../sprite.svg",
+            },
           },
-          symbol: true // Activate the «symbol» mode
-        }
-      }
-    ))
-    .pipe(gulp.dest("build/img/new/"));
-  });
+        } )
+      )
+      .pipe( gulp.dest( paths.svgSprite.dest ) )
+      .pipe( browserSync.stream() )
+  );
+};
+exports.sprites = sprites;
 
-// Copying fonts
+/* SVG MINIFICATION */
 
-gulp.task("fonts", function() {
-  return gulp.src("source/fonts/**/*")
-    .pipe(gulp.dest("build/fonts"));
-});
+const svg = () => {
+  return gulp
+    .src( paths.svg.src )
+    .pipe( plumber() )
+    .pipe( newer( paths.svg.dest ) )
+    .pipe(
+      imagemin( [
+        imagemin.svgo( {
+          plugins: [
+            {
+              removeViewBox: true,
+            },
+            {
+              cleanupIDs: false,
+            },
+          ],
+        } ),
+      ] )
+    )
+    .pipe( gulp.dest( paths.svg.dest ) )
+    .pipe( browserSync.stream() );
+};
+exports.svg = svg;
 
-gulp.task("html", function() {
-  return gulp.src("*/**/*.html")
-    .pipe(gulp.dest("build/"))
-    .pipe(browserSync.stream());
-});
+/* FONTS MOVING TO BUILD */
 
-gulp.task("video", function() {
-  return gulp.src("source/video/**/*")
-    .pipe(gulp.dest("build/video/"));
-});
+const fonts = () => {
+  return gulp
+    .src( paths.fonts.src )
+    .pipe( plumber() )
+    .pipe( newer( paths.fonts.dest ) )
+    .pipe( gulp.dest( paths.fonts.dest ) )
+    .pipe( browserSync.stream() );
+};
+exports.fonts = fonts;
 
-// Task вызывающий функцию watch
-gulp.task("watch", watch);
+// ASSETS MOVING TO BUILD
 
+const assets = () => {
+  return gulp
+    .src( paths.assets.src )
+    .pipe( plumber() )
+    .pipe( newer( paths.assets.dest ) )
+    .pipe( gulp.dest( paths.assets.dest ) )
+    .pipe( browserSync.stream() );
+};
 
-
-gulp.task("build", gulp.series("del", "styles", "images", "webp", "sprite", "html", "video", gulp.parallel( "fonts", "scripts" )), function(done){
+ // Reload
+const reload = (done) => {
+  browserSync.reload( { stream: true } );
   done();
-});
+};
 
-gulp.task("default", gulp.series("build", "watch")
+// Server
+const server = (done) => {
+  browserSync.init( {
+    server: {
+      baseDir: paths.prod.build,
+    },
+    reloadOnRestart: true,
+    cors: true,
+    notify: false,
+    ui: false,
+  } );
+  done();
+};
+exports.server = server;
+
+// Watcher
+const watcher = () => {
+  gulp.watch( paths.less.watch, gulp.series( styles ) );
+  gulp.watch( paths.js.watch, gulp.series( scripts ) );
+  gulp.watch( paths.html.watch, gulp.series( html, reload ) );
+  gulp.watch( paths.images.watch, gulp.series( imgmin, reload ) );
+  gulp.watch( paths.images.watch, gulp.series( createWebp, reload ) );
+  gulp.watch( paths.svgSprite.watch, gulp.series( sprites, reload ) );
+  gulp.watch( paths.svg.watch, gulp.series( svg, reload ) );
+  gulp.watch( paths.fonts.watch, gulp.series( fonts, reload ) );
+  gulp.watch( paths.assets.watch, gulp.series( assets, reload ) );
+
+};
+
+exports.default = gulp.series(
+  // clean,
+  imgmin,
+
+  gulp.parallel( html, styles, sprites, scripts, createWebp, svg, fonts, assets ),
+  gulp.series( server, watcher )
 );
+
+const prod = gulp.series(
+  // clean,
+  fonts,
+  assets,
+  gulp.parallel( styles, html, scripts, imgmin, createWebp, sprites, svg,   ),
+  gulp.series( server, watcher )
+);
+exports.prod = prod;
+

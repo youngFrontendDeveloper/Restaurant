@@ -6,8 +6,10 @@
 *.psd
 *.sublime*
 style.min.css.map
+ package-lock.json
+
 script.js.map
-# build/
+ build/
 node_modules/
 npm-debug.*
 source/css/*.css
