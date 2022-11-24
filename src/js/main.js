@@ -61,28 +61,31 @@ $(function(){
 
 
 
-   //Функция для мобильного меню
-   let navItems = document.querySelector('.nav__items');
-   let nav = document.querySelector('.nav__menu-mobile');
+  //Функция для мобильного меню
+  let navItems = document.querySelector( ".nav__items" );
+  let nav = document.querySelector( ".nav__menu-mobile" );
+  let menuItems = document.querySelectorAll( ".nav__item" );
 
-   function openMobileMenu() {
-    if (document.documentElement.clientWidth < 768) {
-      navItems.classList.add('nav__items--closed');
-      nav.addEventListener('click', function() {
-        navItems.classList.toggle('nav__items--closed');
-      });
+  function toggleMobileMenu() {
+    if( document.documentElement.clientWidth < 768 ) {
+      navItems.classList.add( "nav__items--closed" );
+      nav.addEventListener( "click", () => {
+        navItems.classList.toggle( "nav__items--closed" );
+      } );
+
+      menuItems.forEach( (item) => {
+        item.addEventListener( "click", () => {
+          console.log( "click" );
+          navItems.classList.add( "nav__items--closed" );
+        } );
+      } );
     } else {
-      navItems.classList.remove('nav__items--closed');
+      navItems.classList.remove( "nav__items--closed" );
     }
-    
-   }
 
-   openMobileMenu();
+  }
 
-
-
-
-
+  toggleMobileMenu();
 
 
 });   // Окончание главной функции

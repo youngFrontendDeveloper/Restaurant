@@ -15,8 +15,10 @@ const imgCompress = require( "imagemin-jpeg-recompress" );
 const imageminPngquant = require( "imagemin-pngquant" );
 const newer = require( "gulp-newer" );
 const svgSprite = require( "gulp-svg-sprite" );
+const svgstore = require("gulp-svgstore");
 const replace = require( "gulp-replace" );
 const webp = require( "gulp-webp" );
+const cheerio = require('gulp-cheerio');
 
 // npm uninstall gulp-imagemin --save-dev
 // npm install gulp-imagemin@7.1.0 --save-dev
@@ -173,32 +175,19 @@ const sprites = () => {
   return (
     gulp
       .src( paths.svgSprite.src )
-      .pipe( plumber() )
-      .pipe( newer( paths.svgSprite.dest ) )
-      .pipe(
-        imagemin( [
-          imagemin.svgo( {
-            plugins: [
-              {
-                removeViewBox: true,
-              },
-              {
-                cleanupIDs: false,
-              },
-            ],
-          } ),
-        ] )
-      )
+      .pipe(cheerio({
+        run: function ($) {
+          // $('[fill]').removeAttr('fill');
+          $('[stroke]').removeAttr('stroke');
+          $('[style="fill:#ffffff;"]').removeAttr('style');
+        },
+        parserOptions: {xmlMode: true}
+      }))
       .pipe( replace( "&gt;", ">" ) )
-      .pipe(
-        svgSprite( {
-          mode: {
-            symbol: {
-              sprite: "../sprite.svg",
-            },
-          },
-        } )
-      )
+      .pipe(svgstore({
+        inlineSvg: true
+      }))
+      .pipe(rename("sprite.svg"))
       .pipe( gulp.dest( paths.svgSprite.dest ) )
       .pipe( browserSync.stream() )
   );
