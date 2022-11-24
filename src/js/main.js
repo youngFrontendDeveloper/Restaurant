@@ -5,8 +5,25 @@ $(function(){
   //Функция для слик-слайдера
 
   $('.slick-slider').slick({
-    slidesToShow: 1,   /*Показывает по 1 картинке*/
-    slidesToScroll: 1,   //прокручивает по 1 картинке
+    infinite: false,
+    responsive: [
+      {
+      breakpoint: 1200,
+      settings: {
+        slidesToShow: 2,
+        infinite: true
+      }
+
+    }, {
+
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+        infinite: true
+      }
+    }],
+
+    slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
     dots: true,
