@@ -28,7 +28,7 @@ const cheerio = require('gulp-cheerio');
 
 // Project info
 
-const buildFolder = "./build";
+const buildFolder = "./docs";
 
 // Название текущего проекта
 
