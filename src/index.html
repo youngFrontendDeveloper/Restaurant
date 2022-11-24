@@ -19,7 +19,7 @@
   
   <link rel="stylesheet" href="./css/style.min.css">
   <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
-  <link rel="preload" href="./img/steak.webp" as="image">
+  <link rel="preload" as="image" href="./img/steak.jpg" imagesrcset="./img/steak.webp 1x, ./img/steak@2x.webp 2x" >
   <title>Restaurant - заказать место в ресторане на определенную дату</title>
 </head>
 <body class="page">
@@ -88,16 +88,29 @@
         </div>
         <div class="description__img-block description__img-block--about">
           <div class="description__row">
-            <img class="image-about" src="./img/kabob.webp" alt="Вид блюд: кабоб" width="250" height="180"
-                 loading="lazy">
-            <img class="image-about none" src="./img/limes.webp" alt="Вид блюд: limes" width="250" height="180"
-                 loading="lazy">
+            <picture>
+              <source type="image/webp" srcset="./img/kabob.webp 1x, ./img/kabob@2x.webp 2x">
+              <img class="image-about" src="./img/kabob.jpg" srcset="./img/kabob.jpg 1x, ./img/kabob@2x.jpg 2x"
+                   alt="Вид блюд: кабоб" width="250" height="180" loading="lazy">
+            </picture>
+            <picture>
+              <source type="image/webp" srcset="./img/limes.webp 1x, ./img/limes@2x.webp 2x">
+              <img class="image-about none" src="./img/limes.jpg" srcset="./img/limes.jpg 1x, ./img/limes@2x.jpg 2x"
+                   alt="Вид блюд:  limes" width="250" height="180" loading="lazy">
+            </picture>
+          
           </div>
           <div class="description__row">
-            <img class="image-about none" src="./img/radish.webp" alt="Вид блюд: radish" width="250" height="180"
-                 loading="lazy">
-            <img class="image-about none" src="./img/corn.webp" alt="Вид блюд: corn" width="250" height="180"
-                 loading="lazy">
+            <picture>
+              <source type="image/webp" srcset="./img/radish.webp 1x, ./img/radish@2x.webp 2x">
+              <img class="image-about none" src="./img/radish.jpg" srcset="./img/radish.jpg 1x, ./img/radish@2x.jpg 2x"
+                   alt="Вид блюд: radish" width="250" height="180" loading="lazy">
+            </picture>
+            <picture>
+              <source type="image/webp" srcset="./img/corn.webp 1x, ./img/corn@2x.webp 2x">
+              <img class="image-about none" src="./img/corn.jpg" srcset="./img/corn.jpg 1x, ./img/corn@2x.jpg 2x"
+                   alt="Вид блюд: corn" width="250" height="180" loading="lazy">
+            </picture>
           
           </div>
         </div>   <!--    end description__img-block -->
@@ -122,35 +135,67 @@
           </ul>    <!--    end filter-controls -->
           <div class="filter-container" id="Container">
             <div class="filter-container__item all breakfast">
-              <img src="./img/food_icon01.webp " alt="Виды блюд" width="207" height="166" loading="lazy">
+              <picture>
+                <source type="image/webp" srcset="./img/food_icon01.webp 1x, ./img/food_icon01@2x.webp 2x">
+                <img  src="./img/food_icon01.jpg" srcset="./img/food_icon01.jpg 1x, ./img/food_icon01@2x.jpg 2x"
+                     alt="Виды блюд" width="207" height="166" loading="lazy">
+              </picture>
               <p class="text text--filter-container">$20</p>
             </div>
             <div class="filter-container__item all special desert">
-              <img src="./img/food_icon02.webp " alt="Виды блюд" width="207" height="166" loading="lazy">
+              <picture>
+                <source type="image/webp" srcset="./img/food_icon02.webp 1x, ./img/food_icon02@2x.webp 2x">
+                <img  src="./img/food_icon02.jpg" srcset="./img/food_icon02.jpg 1x, ./img/food_icon02@2x.jpg 2x"
+                      alt="Виды блюд" width="207" height="166" loading="lazy">
+              </picture>
               <p class="text text--filter-container">$20</p>
             </div>
             <div class="filter-container__item all breakfast">
-              <img src="./img/food_icon03.webp " alt="Виды блюд" width="207" height="166" loading="lazy">
+              <picture>
+                <source type="image/webp" srcset="./img/food_icon03.webp 1x, ./img/food_icon03@2x.webp 2x">
+                <img  src="./img/food_icon03.jpg" srcset="./img/food_icon03.jpg 1x, ./img/food_icon03@2x.jpg 2x"
+                      alt="Виды блюд" width="207" height="166" loading="lazy">
+              </picture>
               <p class="text text--filter-container">$18</p>
             </div>
             <div class="filter-container__item all dinner">
-              <img src="./img/food_icon04.webp " alt="Виды блюд" width="207" height="166" loading="lazy">
+              <picture>
+                <source type="image/webp" srcset="./img/food_icon04.webp 1x, ./img/food_icon04@2x.webp 2x">
+                <img  src="./img/food_icon04.jpg" srcset="./img/food_icon04.jpg 1x, ./img/food_icon04@2x.jpg 2x"
+                      alt="Виды блюд" width="207" height="166" loading="lazy">
+              </picture>
               <p class="text text--filter-container">$15</p>
             </div>
             <div class="filter-container__item all breakfast dinner">
-              <img src="./img/food_icon05.webp " alt="Виды блюд" width="207" height="166" loading="lazy">
+              <picture>
+                <source type="image/webp" srcset="./img/food_icon05.webp 1x, ./img/food_icon05@2x.webp 2x">
+                <img  src="./img/food_icon05.jpg" srcset="./img/food_icon05.jpg 1x, ./img/food_icon05@2x.jpg 2x"
+                      alt="Виды блюд" width="207" height="166" loading="lazy">
+              </picture>
               <p class="text text--filter-container">$20</p>
             </div>
             <div class="filter-container__item all special desert">
-              <img src="./img/food_icon06.webp " alt="Виды блюд" width="207" height="166" loading="lazy">
+              <picture>
+                <source type="image/webp" srcset="./img/food_icon06.webp 1x, ./img/food_icon06@2x.webp 2x">
+                <img  src="./img/food_icon06.jpg" srcset="./img/food_icon06.jpg 1x, ./img/food_icon06@2x.jpg 2x"
+                      alt="Виды блюд" width="207" height="166" loading="lazy">
+              </picture>
               <p class="text text--filter-container">$22</p>
             </div>
             <div class="filter-container__item all dinner">
-              <img src="./img/food_icon07.webp " alt="Виды блюд" width="207" height="166" loading="lazy">
+              <picture>
+                <source type="image/webp" srcset="./img/food_icon07.webp 1x, ./img/food_icon07@2x.webp 2x">
+                <img  src="./img/food_icon07.jpg" srcset="./img/food_icon07.jpg 1x, ./img/food_icon07@2x.jpg 2x"
+                      alt="Виды блюд" width="207" height="166" loading="lazy">
+              </picture>
               <p class="text text--filter-container">$32</p>
             </div>
             <div class="filter-container__item all desert">
-              <img src="./img/food_icon08.webp " alt="Виды блюд" width="207" height="166" loading="lazy">
+              <picture>
+                <source type="image/webp" srcset="./img/food_icon08.webp 1x, ./img/food_icon08@2x.webp 2x">
+                <img  src="./img/food_icon08.jpg" srcset="./img/food_icon08.jpg 1x, ./img/food_icon08@2x.jpg 2x"
+                      alt="Виды блюд" width="207" height="166" loading="lazy">
+              </picture>
               <p class="text text--filter-container">$38</p>
             </div>
           
@@ -167,7 +212,13 @@
     <div class="container">
       <div class="description">
         <div class="description__img-block">
-          <img class="image-beer" src="./img/beer_spec.webp" alt="Кружка пива" width="445" height="350" loading="lazy">
+          <picture>
+            <source type="image/webp" srcset="./img/beer_spec.webp 1x, ./img/beer_spec@2x.webp 2x">
+            <img  class="image-beer" src="./img/beer_spec.jpg"
+                  srcset="./img/beer_spec.jpg 1x, ./img/beer_spec@2x.jpg 2x"
+                  alt="Кружка пива" width="445" height="350" loading="lazy">
+          </picture>
+
         </div>   <!--    end description__img-block -->
         <div class="description__text-block description__text-block--beer">
           <h3 class="description__title title title--small title--beer">our beer</h3>
@@ -194,10 +245,18 @@
         </div>
         <div class="description__img-block">
           <div class="description__row">
-            <img class="image-bread" src="./img/bread2.webp" alt="Вид блюд: кабоб" width="260" height="280"
-                 loading="lazy">
-            <img class="image-bread none" src="./img/bread1.webp" alt="Вид блюд: radish" width="260" height="280"
-                 loading="lazy">
+            <picture>
+              <source type="image/webp" srcset="./img/bread2.webp 1x, ./img/bread2@2x.webp 2x">
+              <img  class="image-bread" src="./img/bread2.jpg"
+                    srcset="./img/bread2.jpg 1x, ./img/bread2@2x.jpg 2x"
+                    alt="Виды хлеба" width="260" height="280" loading="lazy">
+            </picture>
+            <picture>
+              <source type="image/webp" srcset="./img/bread1.webp 1x, ./img/bread1@2x.webp 2x">
+              <img  class="image-bread" src="./img/bread1.jpg"
+                    srcset="./img/bread1.jpg 1x, ./img/bread1@2x.jpg 2x"
+                    alt="Виды хлеба" width="260" height="280" loading="lazy">
+            </picture>
           </div>
         </div>   <!--    end description__img-block -->
       </div>   <!--    end description -->
@@ -218,16 +277,28 @@
         </div>
         <div class="featured__slick-slider slick-slider">
           <div class="slider-item">
-            <img class="image-slide" src="./img/slider1.webp" alt="Популярные блюда" width="220" height="145"
-                 loading="lazy">
+            <picture>
+              <source type="image/webp" srcset="./img/slider1.webp 1x, ./img/slider1@2x.webp 2x">
+              <img  class="image-slide" src="./img/slider1.jpg"
+                    srcset="./img/slider1.jpg 1x, ./img/slider1@2x.jpg 2x"
+                    alt="Популярные блюда" width="220" height="145" loading="lazy">
+            </picture>
           </div>
           <div class="slider-item">
-            <img class="image-slide" src="./img/slider2.webp" alt="Популярные блюда" width="220" height="145"
-                 loading="lazy">
+            <picture>
+              <source type="image/webp" srcset="./img/slider2.webp 1x, ./img/slider2@2x.webp 2x">
+              <img  class="image-slide" src="./img/slider2.jpg"
+                    srcset="./img/slider2.jpg 1x, ./img/slider2@2x.jpg 2x"
+                    alt="Популярные блюда" width="220" height="145" loading="lazy">
+            </picture>
           </div>
           <div class="slider-item">
-            <img class="image-slide" src="./img/slider3.webp" alt="Популярные блюда" width="220" height="145"
-                 loading="lazy">
+            <picture>
+              <source type="image/webp" srcset="./img/slider3.webp 1x, ./img/slider3@2x.webp 2x">
+              <img  class="image-slide" src="./img/slider3.jpg"
+                    srcset="./img/slider3.jpg 1x, ./img/slider3@2x.jpg 2x"
+                    alt="Популярные блюда" width="220" height="145" loading="lazy">
+            </picture>
           </div>
         </div>
       
@@ -314,7 +385,7 @@
     <div class="map">
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3619.101888132289!2d91.86551011479227!3d24.8945059840379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x37505558dd0be6a1%3A0x65c7e47c94b6dc45!2sTechnext%20Limited!5e0!3m2!1sru!2sru!4v1597411761809!5m2!1sru!2sru"
-        width="100%" height="450"  style="border:0;" allowfullscreen="" aria-hidden="false"
+        width="100%" height="450" style="border:0;" allowfullscreen="" aria-hidden="false"
         tabindex="0"></iframe>
     </div>
     <div class="container">
